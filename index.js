@@ -1,112 +1,90 @@
 // Bai 1 : tính tiền lương nhân viên
-// sơ đồ 0 khối :
-// block 1: nhập vào
-// - số ngày làm
-// block 2: các bước thực hiện:
-// b1: tạo biến cho lương 1 ngày là luong1ngay và gán giá trị là 100000
-// b2: tạo biến cho số ngày làm và tổng lương là soNgayLam và tongLuong
-// b3: gán giá trị cho soNgayLam
-// b4:: sử dụng công thức tính lương:
-// tongLuong = soNgayLam*luong1ngay
-// b5: in kết quả tongLuong ra console
-// block 3: xuất ra :
-// -lương nhân viên
-const luong1ngay = 100000;
-let soNgayLam = 10;
-let tongLuong ;
-tongLuong = soNgayLam*luong1ngay;
-console.log("luong cua nhan vien trong thang lam viec 10 ngay la:",tongLuong);
+// Nhập vào số ngày làm
+// Xuất ra kết quả tiền lương đc nhận 
+//DOM vào form có id = calcSalary và viết lệnh khi thực hiện submit form
+document.getElementById('calcSalary').onsubmit = function(evt) {
+    //ngăn chặn load lại trang khi submit form
+    evt.preventDefault();
+    //tạo biến đựng value của ô input có id = dayNumber
+    const dayNumber = +evt.target.elements.dayNumber.value;
+    //thực hiện tinhs toán tiền lương và gán vào biến result
+    const result = dayNumber*100000;
+    //DOM vào phần tử html xuất ra kết quả 
+    const salaryEl = document.getElementById('salaryInfor')
+    // thay đổi nội dụng của phần tử HTML chứa kết quả
+    salaryEl.innerHTML = `lương nhân viên:${result}`;
+}
 
 // Bai 2: tính giá trị trung bình của 5 số thực 
+    //nhập vào 5 số thực cần tính giá trị trung bình
+    //xuất ra giá trị trung bình của 5 số thực 
+    // DOM vào form có id = calcAverage và gán hàm vào sự kiện submit form
+    document.getElementById('calcAverage').onsubmit = function(evt){
+        // ngăn chăn reload trang khi submit form
+        evt.preventDefault();
+        //DOM vào các ô input nhập vào các số cần tính giá trị trung bình
+        const number1 = +evt.target.elements.number1.value
+        const number2 = +evt.target.elements.number2.value
+        const number3 = +evt.target.elements.number3.value
+        const number4 = +evt.target.elements.number4.value
+        const number5 = +evt.target.elements.number5.value
+        //tạo biến chứa kết quả và sử dụng công thức tính giá trị trung bình 
+        const average = (number1 + number2 +number3 + number4 + number5)/5;
+        // DOM vào phần tử HTML chứa kết quả và thay đổi nội dung bằng kết quả tính đc 
+        document.getElementById('averageInfor').innerHTML = `giá trị trung bình:${average}`
 
-// sơ đồ 3 khối :
-// block 1: nhập vào
-// - 5 số thực muốn tính giá trị trung bình
-// block 2: các bước thực hiện:
-// b1: tạo biến cho 5 số thực : a,b,c,d,e,f
-// b2: gán giá trị cho a,b,c,d,e,f
-// b3: tạo biến cho giá trị trong bình là trungBinh
-// b4:: sử dụng công thức tính giá trị trung bình:
-// trungBinh = (a+b+c+d+e)/5
-// b5: in kết quả trungBinh ra console
-// block 3: xuất ra :
-// -giá trị trung bình của 5 số thực
+    }
 
-let a,b,c,d,e;
-a = 10
-b = 10
-c = 10
-d = 10 
-e = 10
-let trungBinh;
-trungBinh = (a+b+c+d+e)/5;
-console.log("gia tri trung binh la :",trungBinh)
 // Bai 3: bài toán quy đổi tiền từ USD sang VND
-
-// sơ đồ 3 khối :
-// block 1: nhập vào:
-// - số USD cần đổi ra VNĐ
-// block 2: các bước thực hiện:
-// b1: tạo biến cho số USD cần đổi là nUSD
-// b2: tạo biến cho giá USD hiện nay là curUSD và gán giá trị là 23.500
-// b3:gán giá trị cho nUSD
-// b4::tạo biến cho số tiền VND được quy đổi ra là totalVND
-// b5: sử dụng công thức : totalVND = nUSD*curUSD
-// b5: in kết quả totalVND ra console
-// block 3: xuất ra :
-// - giá trị VND 
-const curUSD = 23500;
-let nUSD ;
-nUSD = 3;
-let totalVND;
-totalVND = nUSD*curUSD;
-console.log("người dùng nhập vào 3 USD =>",totalVND,"VND" );
+    // nhập vào số USD cần đổi
+    //xuất ra số tiền VNĐ được đổi ra
+    // DOM vào form có id = changeMoney và gán hàm vào sự kiện submit form
+    document.getElementById('changeMoney').onsubmit = function(evt){
+        // ngăn chăn reload trang khi submit form
+        evt.preventDefault();
+        //lấy giá trị của ô input có id MoneyNumber
+        const moneyNumber = +evt.target.elements.moneyNumber.value;
+        //Sử dụng công thức tính ra kết quả và tạo biến chứa kết quả đó
+        const result = moneyNumber*23500
+        //DOM vào phần tử HTML chứa kết quả và thay đổi nội dung 
+        document.getElementById('moneyInfor').innerHTML =`số tiền sau khi đổi: ${result} VNĐ`
+    }
 
 // Bai 4: tính chu vi, diện tích hình chữ nhật
+    // nhập vào chiều dài và chiều rộng hình chữ nhật
+    //xuất ra chu vi và diện tích hình chữ nhật
+    // DOM vào form có id = calcHCN và gán hàm vào sự kiện submit form
+    document.getElementById('calcHCN').onsubmit = function(evt){
+        // ngăn chăn reload trang khi submit form
+        evt.preventDefault();
+        //lấy giá trị của 2 ô input chứa chiều dài và chiều rộng của HCN
+        const chieuRong = +evt.target.elements.chieuRong.value;
+        const chieuDai = +evt.target.elements.chieuDai.value;
+        //sử dụng công thức tính chu vi và diện tích, tạo biến chứa 2 giá trị này
+        const dienTich = chieuRong*chieuDai;
+        const chuVi = (chieuDai+chieuRong)*2;
+        //DOM vào phần tử HTML xuất ra kết quả và thay đổi nội dung của phần tử này bằng kết quả tính đc 
+        document.getElementById('HCNInfor').innerHTML = `chu vi và diện tích HCN là: ${chuVi} và ${dienTich}`
+    }
 
-// sơ đồ 3 khối :
-// block 1: nhập vào:
-// - chiều dài
-// - chiều rộng
-// block 2: các bước thực hiện:
-// b1: tạo biến cho chiều dài và chiều rộng của hình chữ nhật là cDai và cRong
-// b2: tạo biến cho chu vi và diện tích của hình chữ nhật là cVi và dTich;
-// b3: gán giá trị cho cDai và cRong
-// b4: sử dụng công thưc tính chu vi : cVi = (cDai + cRong)*2;
-// b5: sử dụng công thức tính diện tích : dTich = cDai*cRong
-// b6: in kết quả cVi và dTich ra console
-// block 3: xuất ra :
-// - giá trị chu vi 
-// -giá trị diện tích 
-const cDai = 5;
-const cRong = 3;
-let cVi,dTich;
-cVi = (cDai + cRong)*2;
-dTich = cDai*cRong;
-console.log("chu vi và diện tích là",cVi,"và",dTich)
 
 // Bai 5: tính tổng 2 kí số của số được nhập 
+    //nhập vào số cần tính tổng 2 kí số 
+    //xuất ra màn hình tổng 2 kí số 
+    // DOM vào form có id = sumNumber và gán hàm vào sự kiện submit form
+    document.getElementById('sumNumber').onsubmit = function(evt){
+        //ngăn chặn hạnh động load lại trang khi submit form
+        evt.preventDefault();
+        // lấy giá trị của ô input chứ số cần tính tổng 2 kí số
+        const number = +evt.target.number.value;
+        //lấy giá trị kí số đầu tiên
+        const numberleft = Math.floor(number/10);
+        //lấy giá trị kí số thứ 2
+        const numberRight = number%10;
+        //tính tổng 2 kí số 
+        const sum = numberleft + numberRight;
+        //DOM vào phần tử chứa kết quả và thay đổi nội dung chứa kết quả
+        document.getElementById('numberInfor').innerHTML = ` tổng 2 kí số: ${sum}`;
+    }
 
-// sơ đồ 3 khối :
-// block 1: nhập vào:
-// - số tự nhiên có 2 chữ số
-// block 2: các bước thực hiện:
-// b1: tạo biến cho số được nhập vào là n
-// b2: tạo biến cho kí số hàng chục và kí số hàng đơn vì là chuc và donvi;
-// b3: gán giá trị cho n
-// b4: sử dụng công thưc tìm lấy số hàng chục : chuc = n/10;
-// b5: sử dụng công thức tìm số hàng đơn vị : donvi = n%10
-// b6: tạo biến cho tổng 2 kí số là sum
-// b7: sử dụng công thức tính tổng 2 kí số : sum = Math.floor(chuc) + d;
-// b8: xuất ra màn hình sum
-// block 3: xuất ra :
-// - giá trị tổng 2 kí số n
 
-let n;
-let chuc,donvi;
-n = 56;
-chuc = n/10;
-donvi = n%10;
-let sum;
-sum = Math.floor(chuc) + donvi;
-console.log("tổng 2 kí số là:",sum)
